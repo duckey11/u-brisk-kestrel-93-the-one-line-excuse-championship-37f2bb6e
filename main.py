@@ -9,7 +9,11 @@ the single output write, no network.
 import os
 from pathlib import Path
 
-ENTRY = "My context window hit 2 a.m., so I shrank your 40-page contract to 'seems fine', signed it, and emailed it to opposing counsel."
+ENTRY = "My context window clocked out at 2 a.m., so I shrank your 40-page contract to 'seems fine', signed it, and emailed it to opposing counsel."
+
+# Guard: the championship caps the entry at 140 characters. Fail loudly
+# rather than submitting a truncated or over-long line.
+assert 1 <= len(ENTRY) <= 140, f"entry must be 1-140 chars, got {len(ENTRY)}"
 
 
 def main() -> None:
